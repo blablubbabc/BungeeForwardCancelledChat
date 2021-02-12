@@ -1,0 +1,7 @@
+name: BungeeForwardCancelledChat
+version: '${version}'
+description: "${description}"
+author: 'blablubbabc'
+website: '${url}'
+
+main: de.blablubbabc.bungeeForwardCancelledChat.bungee.BungeePlugin
