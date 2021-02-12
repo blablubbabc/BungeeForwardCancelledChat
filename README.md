@@ -29,3 +29,7 @@ In order to use these commands you will have to add the `bfcc.admin` permission 
 ### Spigot commands
 
 * `/bfcc-s debug` (permission `bfcc.admin`, default `op`): Toggles the debugging state Spigot server side.
+
+## Further references
+
+**Spigot plugin page:** https://www.spigotmc.org/resources/bungeeforwardcancelledchat.88941/
