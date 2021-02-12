@@ -21,11 +21,11 @@ Copy the plugin jar to both the BungeeCoord's and all of your Spigot servers' pl
 
 ### BungeeCoord commands
 
-* `/bfcc debug` (permission `bfcc.admin`): Toggles the debugging state.
+* `/bfcc debug` (permission `bfcc.admin`): Toggles the debugging state on the BungeeCoord side.
 * `/bfcc mute` (permission `bfcc.admin`): Mutes and unmutes yourself. This command is meant for testing purposes, to verify that this plugin works as expected.
 
 In order to use these commands you will have to add the `bfcc.admin` permission to your admin group in your BungeeCoord config.
 
 ### Spigot commands
 
-* `/bfcc-s debug` (permission `bfcc.admin`, default `op`): Toggles the debugging state.
+* `/bfcc-s debug` (permission `bfcc.admin`, default `op`): Toggles the debugging state Spigot server side.
