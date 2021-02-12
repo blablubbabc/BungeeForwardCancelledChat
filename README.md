@@ -28,7 +28,7 @@ In order to use these commands you will have to add the `bfcc.admin` permission 
 
 ### Spigot commands
 
-* `/bfcc-s debug` (permission `bfcc.admin`, default `op`): Toggles the debugging state Spigot server side.
+* `/bfcc-s debug` (permission `bfcc.admin`, default `op`): Toggles the debugging state on the Spigot server side.
 
 ## Further references
 
