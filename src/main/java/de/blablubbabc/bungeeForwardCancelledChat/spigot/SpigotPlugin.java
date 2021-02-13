@@ -20,9 +20,9 @@ public class SpigotPlugin extends JavaPlugin {
 			return;
 		}
 
-		if (!this.checkIfBungeeCoord()) {
+		if (!this.checkIfBungeeCord()) {
 			this.getLogger().severe("This server is not using BungeeCord mode!");
-			this.getLogger().severe("If you are using BungeeCoord for this server, please also enable 'settings.bungeecoord' inside your spigot.yml config.");
+			this.getLogger().severe("If you are using BungeeCord for this server, please also enable 'settings.bungeecord' inside your spigot.yml config.");
 			this.getLogger().severe("Disabling ..");
 			this.getServer().getPluginManager().disablePlugin(this);
 			return;
@@ -42,8 +42,8 @@ public class SpigotPlugin extends JavaPlugin {
 		}
 	}
 
-	// Returns true if BungeeCoord is enabled:
-	private boolean checkIfBungeeCoord() {
+	// Returns true if BungeeCord is enabled:
+	private boolean checkIfBungeeCord() {
 		Configuration spigotConfig = this.getServer().spigot().getConfig();
 		return spigotConfig.getBoolean("settings.bungeecord");
 	}

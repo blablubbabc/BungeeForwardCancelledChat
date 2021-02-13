@@ -16,7 +16,7 @@ import de.blablubbabc.bungeeForwardCancelledChat.common.Channels;
 import de.blablubbabc.bungeeForwardCancelledChat.common.util.Log;
 
 /**
- * Reacts to notifications about cancelled BungeeCoord chat events and calls corresponding cancelled
+ * Reacts to notifications about cancelled BungeeCord chat events and calls corresponding cancelled
  * {@link AsyncPlayerChatEvent Bukkit chat events}.
  */
 public class ChatHandler implements PluginMessageListener {

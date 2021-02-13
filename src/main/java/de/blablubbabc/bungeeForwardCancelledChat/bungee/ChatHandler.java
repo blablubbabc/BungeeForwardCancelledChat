@@ -80,7 +80,7 @@ public class ChatHandler implements Listener {
 	// Priority: As late as possible since we only want to react to cancelled events.
 	@EventHandler(priority = Byte.MAX_VALUE)
 	public void onChatLate(ChatEvent event) {
-		// We only forward cancelled events, since non-cancelled events are already getting forwarded by BungeeCoord
+		// We only forward cancelled events, since non-cancelled events are already getting forwarded by BungeeCord
 		// itself:
 		if (!event.isCancelled()) {
 			return;

@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<name>BungeeForwardCancelledChat</name>
-	<description>Forwards cancelled chat events from BungeeCoord to the player's server</description>
+	<description>Forwards cancelled chat events from BungeeCord to the player's server</description>
 	<groupId>de.blablubbabc.bungeeForwardCancelledChat</groupId>
 	<artifactId>BungeeForwardCancelledChat</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
