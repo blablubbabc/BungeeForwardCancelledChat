@@ -11,8 +11,9 @@ These plugins rely on being able to detect chat inputs by players (i.e. chat eve
 
 When the chat event is cancelled on the proxy, the player's chat packet is not forwarded to the player's current Spigot server, and will consequently not result in a chat event that other plugins can detect there. In the Shopkeeper example given above, this would result in players no longer being able to rename their shop NPC.
 
-This plugin simply forwards these cancelled chat events to the player's Spigot server and calls a surrogate AsyncPlayerChatEvent that other Spigot plugins can then react to. The intend of calling Bukkit's AsyncPlayerChatEvent instead of a custom event is that these other plugins should not have to adapt to whether or not they are running behind a BungeeCord proxy: They can simply react to the regular chat event as usual.  
-The called chat event is cancelled right away and should not result in any chat messages being sent to players (this assumes that no plugin on the Spigot server ignores the cancellation state and then manually sends chat messages to players).
+This plugin simply forwards these cancelled chat events to the player's Spigot server and calls a surrogate AsyncPlayerChatEvent that other Spigot plugins can then react to. The intend of calling Bukkit's AsyncPlayerChatEvent instead of a custom event is that these other plugins should not have to adapt to whether or not they are running behind a BungeeCord proxy: They can simply react to the regular chat event as usual.
+
+This plugin triggers a cancelled chat event. If this results in chat messages being sent to players on your server, then you are probably using a chat plugin that ignores this cancellation state. If this is the case, there is nothing I can do about that. This is something for this chat plugin to fix then.
 
 **Summary:** This plugin may help you resolve certain incompatibilities between Spigot plugins that rely on being able to detect chat events, and BungeeCord chat plugins.
 
