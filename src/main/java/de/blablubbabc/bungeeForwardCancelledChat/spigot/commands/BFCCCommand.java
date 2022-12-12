@@ -57,7 +57,8 @@ public class BFCCCommand implements CommandExecutor {
 	private void sendHelp(CommandSender sender) {
 		sender.sendMessage(ChatColor.BLUE + "---- " + ChatColor.GOLD + plugin.getName()
 				+ " (Spigot) v" + plugin.getDescription().getVersion() + ChatColor.BLUE + " ----");
-		sender.sendMessage(ChatColor.YELLOW + "/" + COMMAND_NAME + " debug" + ChatColor.DARK_AQUA + " - Toggles debug mode on and off.");
+		sender.sendMessage(ChatColor.YELLOW + "/" + COMMAND_NAME + " debug" + ChatColor.DARK_AQUA
+				+ " - Toggles debug mode on and off.");
 	}
 
 	private void commandDebug(CommandSender sender, List<String> args) {

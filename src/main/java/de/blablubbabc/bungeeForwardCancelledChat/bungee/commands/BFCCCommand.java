@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
-import de.blablubbabc.bungeeForwardCancelledChat.bungee.ChatHandler;
+import de.blablubbabc.bungeeForwardCancelledChat.bungee.chat.muting.ChatMuting;
 import de.blablubbabc.bungeeForwardCancelledChat.common.Permissions;
 import de.blablubbabc.bungeeForwardCancelledChat.common.debug.Debug;
 
@@ -23,13 +23,13 @@ public class BFCCCommand extends Command {
 	}
 
 	private final Plugin plugin;
-	private final ChatHandler chatHandler;
+	private final ChatMuting chatMuting;
 
-	public BFCCCommand(Plugin plugin, ChatHandler chatHandler) {
+	public BFCCCommand(Plugin plugin, ChatMuting chatMuting) {
 		super("bfcc", null, "BungeeForwardCancelledChat");
-		assert plugin != null && chatHandler != null;
+		assert plugin != null && chatMuting != null;
 		this.plugin = plugin;
-		this.chatHandler = chatHandler;
+		this.chatMuting = chatMuting;
 	}
 
 	public void register() {
@@ -66,8 +66,10 @@ public class BFCCCommand extends Command {
 	private void sendHelp(CommandSender sender) {
 		sender.sendMessage(legacy(ChatColor.BLUE + "---- " + ChatColor.GOLD + plugin.getDescription().getName()
 				+ " (Bungee) v" + plugin.getDescription().getVersion() + ChatColor.BLUE + " ----"));
-		sender.sendMessage(legacy(ChatColor.YELLOW + "/bfcc debug" + ChatColor.DARK_AQUA + " - Toggles debug mode on and off."));
-		sender.sendMessage(legacy(ChatColor.YELLOW + "/bfcc mute" + ChatColor.DARK_AQUA + " - Mutes and unmutes yourself."));
+		sender.sendMessage(legacy(ChatColor.YELLOW + "/bfcc debug" + ChatColor.DARK_AQUA
+				+ " - Toggles debug mode on and off."));
+		sender.sendMessage(legacy(ChatColor.YELLOW + "/bfcc mute" + ChatColor.DARK_AQUA
+				+ " - Mutes and unmutes yourself."));
 	}
 
 	private void commandDebug(CommandSender sender, List<String> args) {
@@ -80,9 +82,10 @@ public class BFCCCommand extends Command {
 			sender.sendMessage(legacy(ChatColor.RED + "This command can only be executed as player!"));
 			return;
 		}
+
 		ProxiedPlayer player = (ProxiedPlayer) sender;
-		boolean newMuted = !chatHandler.isMuted(player);
-		chatHandler.setMuted(player, newMuted);
+		boolean newMuted = !chatMuting.isMuted(player);
+		chatMuting.setMuted(player, newMuted);
 		sender.sendMessage(legacy(ChatColor.GREEN + "You are " + (newMuted ? "now muted" : "no longer muted")));
 	}
 }

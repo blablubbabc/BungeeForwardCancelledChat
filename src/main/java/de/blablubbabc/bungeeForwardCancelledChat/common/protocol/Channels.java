@@ -1,4 +1,4 @@
-package de.blablubbabc.bungeeForwardCancelledChat.common;
+package de.blablubbabc.bungeeForwardCancelledChat.common.protocol;
 
 public class Channels {
 
