@@ -9,23 +9,28 @@ import de.blablubbabc.bungeeForwardCancelledChat.spigot.commands.BFCCCommand;
 
 public class SpigotPlugin extends JavaPlugin {
 
+	private final Config config = new Config(this);
 	private final CancelledChatReceiver cancelledChatReceiver = new CancelledChatReceiver(this);
 	private final BFCCCommand bfccCommand = new BFCCCommand(this);
 
 	@Override
 	public void onEnable() {
 		Log.setLogger(this.getLogger());
+
+		config.saveDefaults();
+		config.loadAndApply();
+
 		if (!this.checkIfSpigot()) {
-			this.getLogger().severe("This server is not using Spigot! Disabling ...");
+			Log.severe("This server is not using Spigot! Disabling ...");
 			this.getServer().getPluginManager().disablePlugin(this);
 			return;
 		}
 
 		if (!this.checkIfBungeeCord()) {
-			this.getLogger().severe("This server is not using BungeeCord mode!");
-			this.getLogger().severe("If you are using BungeeCord for this server, please also "
-					+ "enable 'settings.bungeecord' inside your spigot.yml config.");
-			this.getLogger().severe("Disabling ...");
+			Log.severe("This server is not using BungeeCord mode!");
+			Log.severe("If you are using BungeeCord for this server, please also enable "
+					+ "'settings.bungeecord' inside your spigot.yml config.");
+			Log.severe("Disabling ...");
 			this.getServer().getPluginManager().disablePlugin(this);
 			return;
 		}

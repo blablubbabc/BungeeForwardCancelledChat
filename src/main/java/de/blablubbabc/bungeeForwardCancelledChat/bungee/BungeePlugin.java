@@ -9,6 +9,7 @@ import net.md_5.bungee.api.plugin.Plugin;
 
 public class BungeePlugin extends Plugin {
 
+	private final Config config = new Config(this);
 	private final CancelledChatForwarder cancelledChatForwarder = new CancelledChatForwarder(this);
 	private final ChatMuting chatMuting = new ChatMuting();
 	private final BFCCCommand bfccCommand = new BFCCCommand(this, chatMuting);
@@ -16,6 +17,10 @@ public class BungeePlugin extends Plugin {
 	@Override
 	public void onEnable() {
 		Log.setLogger(this.getLogger());
+
+		config.saveDefaults();
+		config.loadAndApply();
+
 		cancelledChatForwarder.onEnable();
 		bfccCommand.register();
 	}
