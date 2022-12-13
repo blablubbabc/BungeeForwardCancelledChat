@@ -9,12 +9,19 @@ import de.blablubbabc.bungeeForwardCancelledChat.spigot.commands.BFCCCommand;
 
 public class SpigotPlugin extends JavaPlugin {
 
+	private static SpigotPlugin plugin;
+
+	public static SpigotPlugin getInstance() {
+		return plugin;
+	}
+
 	private final Config config = new Config(this);
 	private final CancelledChatReceiver cancelledChatReceiver = new CancelledChatReceiver(this);
 	private final BFCCCommand bfccCommand = new BFCCCommand(this);
 
 	@Override
 	public void onEnable() {
+		plugin = this;
 		Log.setLogger(this.getLogger());
 
 		config.saveDefaults();
@@ -58,5 +65,7 @@ public class SpigotPlugin extends JavaPlugin {
 	@Override
 	public void onDisable() {
 		cancelledChatReceiver.onDisable();
+
+		plugin = null;
 	}
 }

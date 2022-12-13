@@ -1,9 +1,7 @@
 package de.blablubbabc.bungeeForwardCancelledChat.bungee.chat.forwarding;
 
-import com.google.common.io.ByteArrayDataOutput;
-import com.google.common.io.ByteStreams;
-
 import de.blablubbabc.bungeeForwardCancelledChat.common.protocol.Channels;
+import de.blablubbabc.bungeeForwardCancelledChat.common.protocol.serverbound.CancelledChat;
 import de.blablubbabc.bungeeForwardCancelledChat.common.util.Log;
 
 import net.md_5.bungee.api.connection.ProxiedPlayer;
@@ -64,11 +62,12 @@ public class CancelledChatForwarder implements Listener {
 
 		String message = event.getMessage();
 
-		Log.debug(() -> "Forwarding cancelled chat event: player=" + player.getName()
-				+ ", message='" + message + "'");
+		Log.debug(() -> "Forwarding cancelled chat event: thread=" + Thread.currentThread().getName()
+				+ ", player=" + player.getName() + ", message='" + message + "'");
 
-		ByteArrayDataOutput out = ByteStreams.newDataOutput();
-		out.writeUTF(message);
-		player.getServer().sendData(Channels.CANCELLED_CHAT, out.toByteArray());
+		CancelledChat cancelledChat = new CancelledChat(message);
+		// 'Server' is the player-specific connection to the server: The receiving server will know
+		// the player for which the message has been sent.
+		player.getServer().sendData(Channels.CANCELLED_CHAT, cancelledChat.serialize());
 	}
 }
